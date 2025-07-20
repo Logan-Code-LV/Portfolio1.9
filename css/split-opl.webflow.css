@@ -1,14 +1,16 @@
 a {
   color: #848d96;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .body {
   display: block;
   overflow: scroll;
   max-height: 100vh;
-  background-color: #0b1c2f;
+  background-color: transparent;
   font-family: Inter, sans-serif;
+  position: relative;
 }
 
 .leftcontent {
@@ -33,6 +35,8 @@ a {
   -webkit-align-content: flex-start;
   -ms-flex-line-pack: start;
   align-content: flex-start;
+  position: relative;
+  z-index: 1;
 }
 
 .name {
@@ -42,6 +46,8 @@ a {
   line-height: 100%;
   letter-spacing: 1px;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
 }
 
 .bold-text {
@@ -53,14 +59,18 @@ a {
   color: #ddd;
   font-size: 58px;
   line-height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .bio {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   font-family: Lora, sans-serif;
   color: #848d96;
   font-size: 21px;
   line-height: 140%;
+  position: relative;
+  z-index: 2;
 }
 
 .text-block-2 {
@@ -82,6 +92,9 @@ a {
 .credit {
   color: #485462;
   font-size: 13px;
+  position: relative;
+  z-index: 2;
+  margin-top: 16px;
 }
 
 .rightcontent {
@@ -111,10 +124,14 @@ a {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .content {
   overflow: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .links {
@@ -133,6 +150,13 @@ a {
 .bio-links {
   border-bottom: 1px solid #848d96;
   text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.bio-links:hover {
+  color: #47bec7;
+  border-bottom-color: #47bec7;
 }
 
 .credit-links {
@@ -158,8 +182,24 @@ a {
   background-size: cover;
   -o-object-fit: cover;
   object-fit: cover;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Subtle image overlay */
+.image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(71, 190, 199, 0.05), rgba(106, 76, 147, 0.05));
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Responsive Design */
 @media screen and (max-width: 991px) {
   .leftcontent {
     display: block;
@@ -203,22 +243,43 @@ a {
     min-height: auto;
     background-position: 0px 62%;
   }
+
+  .glass-card {
+    margin: 12px 0;
+    padding: 16px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .name {
     margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .tagline {
+    font-size: 42px;
+    line-height: 42px;
   }
 
   .rightcontent {
     padding: 60px;
   }
+
+  .bio {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .glass-card {
+    padding: 12px;
+    margin: 10px 0;
+  }
 }
 
 @media screen and (max-width: 479px) {
   .bold-text {
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 36px;
+    line-height: 36px;
   }
 
   .bio {
@@ -236,6 +297,24 @@ a {
   .image {
     height: 240px;
     max-height: 30vh;
+  }
+
+  .name {
+    font-size: 12px;
+  }
+
+  .glass-card {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
