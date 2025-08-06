@@ -111,11 +111,23 @@
     /* Enhanced Typography */
     .typewriter {
       overflow: hidden;
-      border-right: 2px solid #47bec7;
       white-space: nowrap;
-      animation: typewriter 2.5s steps(35, end), blink 1s step-end infinite;
+      animation: typewriter 2.5s steps(35, end);
       max-width: 100%;
       box-sizing: border-box;
+      position: relative;
+    }
+
+    .typewriter.typing::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(calc(-50% + 10px));
+      width: 2px;
+      height: 0.7em;
+      background: #47bec7;
+      animation: blink 1s step-end infinite;
     }
 
     @keyframes typewriter {
@@ -179,19 +191,28 @@
     }
 
     .achievement {
-      color: #848d96;
+      color: #ddd;
       font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 8px;
+      line-height: 1.6;
+      margin-bottom: 10px;
       position: relative;
-      padding-left: 16px;
+      padding-left: 20px;
+      text-align: justify;
+      hyphens: auto;
     }
 
     .achievement:before {
       content: '▸';
       position: absolute;
       left: 0;
+      top: 2px;
       color: #47bec7;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .achievement:last-child {
+      margin-bottom: 0;
     }
 
     /* Enhanced Skills Section */
@@ -412,6 +433,55 @@
       transform: translateY(-1px);
     }
 
+    /* Bio Section */
+    .bio {
+      margin-bottom: 24px;
+    }
+
+    .bio-paragraph {
+      color: #ddd;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .bio-paragraph:last-child {
+      margin-bottom: 0;
+    }
+
+    .award-link {
+      color: #47bec7;
+      text-decoration: none;
+      position: relative;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: linear-gradient(45deg, #47bec7, #6a4c93);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      border-bottom: 1px solid rgba(71, 190, 199, 0.3);
+    }
+
+    .award-link:hover {
+      border-bottom-color: #47bec7;
+      transform: translateY(-1px);
+      filter: brightness(1.2);
+    }
+
+    .award-link:after {
+      content: ' ↗';
+      font-size: 12px;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .award-link:hover:after {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
     /* Contact Info */
     .contact-info {
       display: flex;
@@ -575,9 +645,28 @@
 
       /* Better mobile spacing */
       .bio {
-        font-size: 18px;
-        line-height: 1.5;
         margin-bottom: 20px;
+      }
+
+      .bio-paragraph {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+        text-align: left;
+      }
+
+      .award-link {
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        color: #47bec7;
+        border-bottom: 1px solid rgba(71, 190, 199, 0.5);
+        font-weight: 500;
+      }
+
+      .award-link:after {
+        content: ' ↗';
+        font-size: 10px;
       }
 
       .experience-item {
@@ -587,7 +676,10 @@
 
       .achievement {
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.5;
+        margin-bottom: 8px;
+        text-align: left;
+        padding-left: 16px;
       }
     }
 
@@ -763,13 +855,15 @@
 
       .achievement {
         font-size: 13px;
-        line-height: 1.4;
-        margin-bottom: 6px;
-        padding-left: 12px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+        padding-left: 16px;
+        text-align: left;
       }
 
       .achievement:before {
-        font-size: 10px;
+        font-size: 12px;
+        top: 1px;
       }
 
       .credit {
@@ -806,8 +900,30 @@
       }
 
       .bio {
-        font-size: 15px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+      }
+
+      .bio-paragraph {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      .award-link {
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        color: #47bec7;
+        border-bottom: 1px solid rgba(71, 190, 199, 0.5);
+        font-weight: 500;
+      }
+
+      .bio-paragraph {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        text-align: left;
       }
 
       .section-header {
@@ -838,7 +954,15 @@
 
       .achievement {
         font-size: 12px;
-        padding-left: 10px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+        padding-left: 14px;
+        text-align: left;
+      }
+
+      .achievement:before {
+        font-size: 11px;
+        top: 1px;
       }
 
       .company-name {
@@ -886,7 +1010,11 @@
             </div>
           </div>
           
-          <p class="bio">Full-stack software engineer with proven expertise in building scalable web applications. Track record of leading technical initiatives and managing complex projects, bringing a unique perspective from construction engineering to software development.</p>
+          <div class="bio">
+            <p class="bio-paragraph">I didn't take the traditional path into software. I graduated with a degree in Political Science, then spent four years as a Project Engineer helping build a 24,000 sq ft, $2,000/sq ft custom home in Park City, Utah which ended up winning <a href="https://www.mountainliving.com/2020-home-of-the-year-dazzle-us/" target="_blank" rel="noopener" class="award-link">Mountain Living's Home of the Year</a>.</p>
+
+            <p class="bio-paragraph">After that project wrapped, I realized I wanted to build things that scale, so I dove into software engineering. Today, I design and develop scalable, user-friendly web applications, bringing the same attention to detail and systems-thinking from my construction days into every line of code.</p>
+          </div>
           
           <div class="social-links">
             <div class="social-links-title">Connect</div>
@@ -962,19 +1090,19 @@
                 <div class="skill-item intermediate">
                   <div class="skill-info">
                     <span class="skill-name">C#</span>
-                    <span class="skill-years">2/5</span>
+                    <span class="skill-years">3/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="20"></div>
+                    <div class="skill-progress" data-level="60"></div>
                   </div>
                 </div>
                 <div class="skill-item intermediate">
                   <div class="skill-info">
                     <span class="skill-name">Python</span>
-                    <span class="skill-years">2/5</span>
+                    <span class="skill-years">3/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="20"></div>
+                    <div class="skill-progress" data-level="60"></div>
                   </div>
                 </div>
               </div>
@@ -993,7 +1121,7 @@
                     <span class="skill-years">5/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="95"></div>
+                    <div class="skill-progress" data-level="100"></div>
                   </div>
                 </div>
                 <div class="skill-item expert">
@@ -1005,13 +1133,13 @@
                     <div class="skill-progress" data-level="90"></div>
                   </div>
                 </div>
-                <div class="skill-item expert">
+                <div class="skill-item intermediate">
                   <div class="skill-info">
                     <span class="skill-name">.NET</span>
-                    <span class="skill-years">4/5</span>
+                    <span class="skill-years">3/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="88"></div>
+                    <div class="skill-progress" data-level="60"></div>
                   </div>
                 </div>
                 <div class="skill-item advanced">
@@ -1020,16 +1148,16 @@
                     <span class="skill-years">4/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="85"></div>
+                    <div class="skill-progress" data-level="80"></div>
                   </div>
                 </div>
-                <div class="skill-item intermediate">
+                <div class="skill-item expert">
                   <div class="skill-info">
                     <span class="skill-name">MeteorJS</span>
-                    <span class="skill-years">4/5</span>
+                    <span class="skill-years">5/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="75"></div>
+                    <div class="skill-progress" data-level="100"></div>
                   </div>
                 </div>
               </div>
@@ -1051,13 +1179,13 @@
                     <div class="skill-progress" data-level="90"></div>
                   </div>
                 </div>
-                <div class="skill-item advanced">
+                <div class="skill-item intermediate">
                   <div class="skill-info">
                     <span class="skill-name">AWS</span>
-                    <span class="skill-years">4/5</span>
+                    <span class="skill-years">3/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
+                    <div class="skill-progress" data-level="60"></div>
                   </div>
                 </div>
                 <div class="skill-item expert">
@@ -1066,7 +1194,7 @@
                     <span class="skill-years">4/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="85"></div>
+                    <div class="skill-progress" data-level="80"></div>
                   </div>
                 </div>
                 <div class="skill-item advanced">
@@ -1094,16 +1222,16 @@
                     <span class="skill-years">5/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="90"></div>
+                    <div class="skill-progress" data-level="100"></div>
                   </div>
                 </div>
-                <div class="skill-item expert">
+                <div class="skill-item advanced">
                   <div class="skill-info">
-                    <span class="skill-name">SQL Server</span>
+                    <span class="skill-name">Azure SQL</span>
                     <span class="skill-years">4/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="88"></div>
+                    <div class="skill-progress" data-level="80"></div>
                   </div>
                 </div>
                 <div class="skill-item advanced">
@@ -1112,7 +1240,7 @@
                     <span class="skill-years">4/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="85"></div>
+                    <div class="skill-progress" data-level="80"></div>
                   </div>
                 </div>
                 <div class="skill-item intermediate">
@@ -1121,7 +1249,7 @@
                     <span class="skill-years">3/5</span>
                   </div>
                   <div class="skill-bar">
-                    <div class="skill-progress" data-level="75"></div>
+                    <div class="skill-progress" data-level="60"></div>
                   </div>
                 </div>
               </div>
@@ -1174,10 +1302,10 @@
       const text1 = 'Software';
       const text2 = 'Engineer';
       
-      // Clear content and add cursor
+      // Clear content and show cursor
       line1.innerHTML = '';
       line2.innerHTML = '';
-      element.style.borderRight = '2px solid #47bec7';
+      element.classList.add('typing');
       
       let i = 0;
       
@@ -1201,7 +1329,7 @@
         } else {
           // Remove cursor after completion
           setTimeout(() => {
-            element.style.borderRight = 'none';
+            element.classList.remove('typing');
           }, 2000);
         }
       }
