@@ -146,10 +146,14 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
-      padding: 32px;
-      margin: 20px 0;
+      padding: 28px 32px;
+      margin: 16px 0;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform, background;
+    }
+
+    .glass-card:first-child {
+      margin-top: 0;
     }
 
     .glass-card:hover {
@@ -160,41 +164,42 @@
 
     /* Experience Section */
     .experience-item {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .experience-item:last-child {
       border-bottom: none;
       margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .company-name {
       color: #47bec7;
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .role-title {
       color: #ddd;
       font-size: 16px;
       font-weight: 500;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .duration {
-      color: #848d96;
+      color: #b8c1cc;
       font-size: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .achievement {
       color: #ddd;
       font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       position: relative;
       padding-left: 20px;
       text-align: justify;
@@ -219,14 +224,14 @@
     .skills-container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
+      gap: 16px;
+      margin-top: 20px;
     }
 
     .skill-category {
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 12px;
+      padding: 20px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
       position: relative;
@@ -258,19 +263,19 @@
     .category-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
 
     .category-icon {
-      font-size: 20px;
+      font-size: 18px;
       filter: drop-shadow(0 0 8px rgba(71, 190, 199, 0.3));
     }
 
     .category-header h4 {
       color: #47bec7;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       margin: 0;
       text-transform: uppercase;
@@ -278,130 +283,59 @@
       flex: 1;
     }
 
-    .proficiency-badge {
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .proficiency-badge.expert {
-      background: rgba(34, 197, 94, 0.15);
-      color: #22c55e;
-      border: 1px solid rgba(34, 197, 94, 0.3);
-    }
-
-    .proficiency-badge.advanced {
-      background: rgba(59, 130, 246, 0.15);
-      color: #3b82f6;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-
-    .proficiency-badge.intermediate {
-      background: rgba(245, 158, 11, 0.15);
-      color: #f59e0b;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-
     .skill-items {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .skill-item {
-      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(71, 190, 199, 0.3);
+      border-radius: 8px;
+      padding: 10px 16px;
       transition: all 0.3s ease;
-      padding: 8px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(71, 190, 199, 0.1), rgba(106, 76, 147, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .skill-item:hover {
-      transform: translateX(4px);
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(71, 190, 199, 0.5);
+      box-shadow: 0 4px 12px rgba(71, 190, 199, 0.2);
     }
 
-    .skill-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
+    .skill-item:hover::before {
+      opacity: 1;
     }
 
     .skill-name {
       color: #ddd;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-    }
-
-    .skill-years {
-      color: #848d96;
-      font-size: 12px;
-      opacity: 0.8;
-    }
-
-    .skill-bar {
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
-      overflow: hidden;
       position: relative;
+      z-index: 1;
     }
 
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, #47bec7, #6a4c93);
-      border-radius: 3px;
-      width: 0%;
-      transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .skill-progress::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+    .skill-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      animation: shimmer 2s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    /* Animation delays for staggered effect */
-    .skill-item:nth-child(1) .skill-progress { animation-delay: 0.2s; }
-    .skill-item:nth-child(2) .skill-progress { animation-delay: 0.4s; }
-    .skill-item:nth-child(3) .skill-progress { animation-delay: 0.6s; }
-    .skill-item:nth-child(4) .skill-progress { animation-delay: 0.8s; }
-    .skill-item:nth-child(5) .skill-progress { animation-delay: 1.0s; }
-
-    /* Skill level indicators */
-    .skill-item.expert .skill-name::after {
-      content: '●';
-      color: #22c55e;
-      margin-left: 8px;
-      opacity: 0.7;
-    }
-
-    .skill-item.advanced .skill-name::after {
-      content: '●';
-      color: #3b82f6;
-      margin-left: 8px;
-      opacity: 0.7;
-    }
-
-    .skill-item.intermediate .skill-name::after {
-      content: '●';
-      color: #f59e0b;
-      margin-left: 8px;
-      opacity: 0.7;
     }
 
     /* Enhanced Links */
@@ -411,6 +345,7 @@
       transition: all 0.3s ease;
       display: inline-block;
       margin-right: 24px;
+      color: #b8c1cc;
     }
 
     .enhanced-link:before {
@@ -435,14 +370,14 @@
 
     /* Bio Section */
     .bio {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .bio-paragraph {
       color: #ddd;
       font-size: 16px;
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-align: justify;
       hyphens: auto;
     }
@@ -485,8 +420,8 @@
     .contact-info {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 24px;
+      gap: 20px;
+      margin-bottom: 20px;
       align-items: center;
     }
 
@@ -494,7 +429,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #848d96;
+      color: #b8c1cc;
       font-size: 14px;
     }
 
@@ -550,14 +485,14 @@
 
     /* Social Links Container */
     .social-links {
-      margin-top: 32px;
-      padding-top: 24px;
+      margin-top: 28px;
+      padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .social-links-title {
-      margin-bottom: 16px;
-      color: #485462;
+      margin-bottom: 14px;
+      color: #9ba5b0;
       font-size: 12px;
       line-height: 12px;
       letter-spacing: 2px;
@@ -567,11 +502,74 @@
     /* Section Headers */
     .section-header {
       color: #47bec7;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* Location Pin Badge */
+    .location-badge {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      background: linear-gradient(135deg, rgba(71, 190, 199, 0.25), rgba(106, 76, 147, 0.25));
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(71, 190, 199, 0.4);
+      border-radius: 20px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(71, 190, 199, 0.2);
+      opacity: 0;
+      animation: fadeInBadge 0.8s ease forwards 0.5s;
+    }
+
+    @keyframes fadeInBadge {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .location-badge:hover {
+      background: linear-gradient(135deg, rgba(71, 190, 199, 0.35), rgba(106, 76, 147, 0.35));
+      border-color: rgba(71, 190, 199, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(71, 190, 199, 0.3);
+    }
+
+    .location-icon {
+      font-size: 20px;
+      filter: drop-shadow(0 0 10px rgba(71, 190, 199, 0.7));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(71, 190, 199, 0.7));
+      }
+      50% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 15px rgba(71, 190, 199, 1));
+      }
+    }
+
+    .location-text {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     /* Performance optimizations */
@@ -601,23 +599,47 @@
       .particles {
         display: none;
       }
+
+      .location-badge {
+        top: 20px;
+        left: 20px;
+        padding: 10px 16px;
+        border-radius: 16px;
+      }
+
+      .location-icon {
+        font-size: 18px;
+      }
+
+      .location-text {
+        font-size: 14px;
+      }
       
       .glass-card {
-        margin: 16px 0;
+        margin: 12px 0;
         padding: 20px;
+      }
+
+      .glass-card:first-child {
+        margin-top: 0;
       }
       
       .enhanced-link {
-        margin-right: 16px;
-        margin-bottom: 8px;
+        margin-right: 14px;
+        margin-bottom: 6px;
       }
 
       .skills-container {
-        gap: 16px;
+        gap: 12px;
+        margin-top: 16px;
       }
 
       .skill-category {
         padding: 16px;
+      }
+
+      .category-header {
+        margin-bottom: 14px;
       }
 
       .category-header h4 {
@@ -625,32 +647,33 @@
       }
 
       .category-icon {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .skill-name {
-        font-size: 14px;
+        font-size: 13px;
       }
 
-      .skill-years {
-        font-size: 11px;
+      .skill-item {
+        padding: 8px 12px;
       }
 
       .contact-info {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 16px;
       }
 
       /* Better mobile spacing */
       .bio {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
       }
 
       .bio-paragraph {
         font-size: 15px;
         line-height: 1.5;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
         text-align: left;
       }
 
@@ -668,16 +691,29 @@
       }
 
       .experience-item {
-        margin-bottom: 24px;
-        padding-bottom: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 14px;
       }
 
       .achievement {
         font-size: 14px;
         line-height: 1.5;
-        margin-bottom: 8px;
+        margin-bottom: 7px;
         text-align: left;
         padding-left: 16px;
+      }
+
+      .section-header {
+        margin-bottom: 16px;
+      }
+
+      .social-links {
+        margin-top: 20px;
+        padding-top: 16px;
+      }
+
+      .social-links-title {
+        margin-bottom: 12px;
       }
     }
 
@@ -723,22 +759,41 @@
     }
 
     @media screen and (max-width: 767px) {
+      .location-badge {
+        top: 16px;
+        left: 16px;
+        padding: 9px 14px;
+        border-radius: 14px;
+      }
+
+      .location-icon {
+        font-size: 16px;
+      }
+
+      .location-text {
+        font-size: 13px;
+      }
+
       .glass-card {
-        padding: 16px;
-        margin: 12px 0;
+        padding: 18px;
+        margin: 10px 0;
         border-radius: 12px;
+      }
+
+      .glass-card:first-child {
+        margin-top: 0;
       }
 
       .section-header {
         font-size: 16px;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
 
       /* Keep title on one line for mobile */
       .tagline {
         font-size: 36px;
         line-height: 1.1;
-        margin-bottom: 32px;
+        margin-bottom: 24px;
       }
 
       .title-line-1 {
@@ -751,17 +806,21 @@
 
       .name {
         font-size: 13px;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
 
       .bio {
         font-size: 16px;
         line-height: 1.5;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
+      }
+
+      .bio-paragraph {
+        margin-bottom: 10px;
       }
 
       .contact-info {
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         gap: 8px;
       }
 
@@ -776,29 +835,29 @@
       }
 
       .social-links {
-        margin-top: 20px;
-        padding-top: 16px;
+        margin-top: 16px;
+        padding-top: 14px;
       }
 
       .social-links-title {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         font-size: 11px;
       }
 
       /* Skills section mobile optimization */
       .skills-container {
-        gap: 12px;
-        margin-top: 16px;
+        gap: 10px;
+        margin-top: 14px;
       }
 
       .skill-category {
-        padding: 16px;
+        padding: 14px;
         border-radius: 12px;
       }
 
       .category-header {
         gap: 8px;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
 
       .category-header h4 {
@@ -809,41 +868,32 @@
         font-size: 16px;
       }
 
-      .proficiency-badge {
-        padding: 3px 8px;
-        font-size: 10px;
-      }
-
       .skill-name {
-        font-size: 13px;
-      }
-
-      .skill-years {
-        font-size: 10px;
-      }
-
-      .skill-bar {
-        height: 5px;
+        font-size: 12px;
       }
 
       .skill-items {
-        gap: 12px;
+        gap: 8px;
+      }
+
+      .skill-item {
+        padding: 6px 10px;
       }
 
       /* Experience section mobile */
       .experience-item {
-        margin-bottom: 20px;
-        padding-bottom: 16px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
       }
 
       .company-name {
         font-size: 16px;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
 
       .role-title {
         font-size: 14px;
-        margin-bottom: 6px;
+        margin-bottom: 3px;
       }
 
       .duration {
@@ -854,7 +904,7 @@
       .achievement {
         font-size: 13px;
         line-height: 1.5;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         padding-left: 16px;
         text-align: left;
       }
@@ -866,22 +916,27 @@
 
       .credit {
         font-size: 11px;
-        margin-top: 12px;
+        margin-top: 14px;
+        padding-bottom: 14px;
       }
     }
 
     @media screen and (max-width: 479px) {
       .glass-card {
-        padding: 12px;
+        padding: 14px;
         margin: 8px 0;
         border-radius: 10px;
+      }
+
+      .glass-card:first-child {
+        margin-top: 0;
       }
 
       /* Even smaller mobile devices - keep on one line */
       .tagline {
         font-size: 32px;
         line-height: 1.1;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
 
       .title-line-1 {
@@ -902,9 +957,9 @@
       }
 
       .bio-paragraph {
-        font-size: 13px;
-        line-height: 1.4;
-        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 8px;
         text-align: left;
       }
 
@@ -916,16 +971,14 @@
         font-weight: 500;
       }
 
-      .bio-paragraph {
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 12px;
-        text-align: left;
-      }
-
       .section-header {
         font-size: 15px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+      }
+
+      .contact-info {
+        gap: 6px;
+        margin-bottom: 12px;
       }
 
       .contact-item {
@@ -937,8 +990,26 @@
         margin-right: 10px;
       }
 
+      .social-links {
+        margin-top: 14px;
+        padding-top: 12px;
+      }
+
+      .social-links-title {
+        margin-bottom: 8px;
+      }
+
+      .skills-container {
+        gap: 8px;
+        margin-top: 12px;
+      }
+
       .skill-category {
         padding: 12px;
+      }
+
+      .category-header {
+        margin-bottom: 10px;
       }
 
       .category-header h4 {
@@ -946,13 +1017,26 @@
       }
 
       .skill-name {
-        font-size: 12px;
+        font-size: 11px;
+      }
+
+      .skill-items {
+        gap: 6px;
+      }
+
+      .skill-item {
+        padding: 5px 8px;
+      }
+
+      .experience-item {
+        margin-bottom: 14px;
+        padding-bottom: 10px;
       }
 
       .achievement {
         font-size: 12px;
         line-height: 1.4;
-        margin-bottom: 6px;
+        margin-bottom: 5px;
         padding-left: 14px;
         text-align: left;
       }
@@ -964,14 +1048,22 @@
 
       .company-name {
         font-size: 15px;
+        margin-bottom: 3px;
       }
 
       .role-title {
         font-size: 13px;
+        margin-bottom: 2px;
       }
 
       .duration {
         font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .credit {
+        margin-top: 12px;
+        padding-bottom: 12px;
       }
     }
   </style>
@@ -986,6 +1078,11 @@
 
   <div class="columns w-row">
     <div class="leftcontent w-col w-col-6 w-col-stack">
+      <!-- Location Badge -->
+      <div class="location-badge">
+        <span class="location-icon">📍</span>
+        <span class="location-text">Seattle, WA</span>
+      </div>
       <div data-w-id="b84f5156-c6e2-fb1d-6606-98a08030a472" style="opacity:0" class="image floating"></div>
     </div>
     <div class="rightcontent w-col w-col-6 w-col-stack">
@@ -1008,9 +1105,9 @@
           </div>
           
           <div class="bio">
-            <p class="bio-paragraph">I didn't take the traditional path into software. I graduated with a degree in Political Science, then spent four years as a Project Engineer helping build a 24,000 sq ft, $2,000/sq ft custom home in Park City, Utah which ended up winning <a href="https://www.mountainliving.com/2020-home-of-the-year-dazzle-us/" target="_blank" rel="noopener" class="award-link">Mountain Living's Home of the Year.</a></p>
+            <p class="bio-paragraph">I didn't take the usual path into software. I graduated with a degree in Political Science, then spent four years as a Project Engineer helping build a 20,000 sq ft custom home in Park City, Utah which ended up winning <a href="https://www.mountainliving.com/2020-home-of-the-year-dazzle-us/" target="_blank" rel="noopener" class="award-link">Mountain Living's Home of the Year.</a></p>
 
-            <p class="bio-paragraph">After that project wrapped, I realized I wanted to build things that scale, so I dove into software engineering. Today, I design and develop scalable, user-friendly web applications, bringing the same attention to detail and systems-thinking from my construction days into every line of code.</p>
+            <p class="bio-paragraph">After that project ended, I decided I wanted to build things that scale. So I dove into software. Today, I design and develop scalable web applications, bringing the same attention to detail and systems-thinking from my construction days into every line of code.</p>
           </div>
           
           <div class="social-links">
@@ -1027,236 +1124,164 @@
           <h2 class="section-header">Experience</h2>
           
           <div class="experience-item">
-            <div class="company-name">Vizient</div>
+            <div class="company-name">
+              <a href="https://www.vizientinc.com/" target="_blank" rel="noopener" class="enhanced-link">Vizient</a>
+            </div>
             <div class="role-title">Software Engineer</div>
             <div class="duration">Apr 2022 - Present</div>
-            <div class="achievement">Developed a Capital Spend platform using Angular, .NET/C#, and Azure</div>
-            <div class="achievement">Built AI-powered quote processing with Python and OpenAI integration</div>
-            <div class="achievement">Architected containerized microservices for on demand quote insights</div>
+            <div class="achievement">AI-powered medcical supplies data processing with Python and OpenAI's SDK/API.</div>
+            <div class="achievement">Capital Spend platform built with Angular, .NET/C, Azure, and SQL.</div>
+            <div class="achievement">Containerized microservices to enable on-demand quote reports.</div>
           </div>
 
           <div class="experience-item">
-            <div class="company-name">SeatStir</div>
+            <div class="company-name">
+              <a href="https://seatstir.com/" target="_blank" rel="noopener" class="enhanced-link">SeatStir</a>
+            </div>
             <div class="role-title">Founder & Technical Lead</div>
             <div class="duration">Jan 2020 - Present</div>
-            <div class="achievement">Founded and led scalable ticketing platform serving thousands of users</div>
-            <div class="achievement">Architected full-stack solutions with MeteorJS, React, and MongoDB</div>
-            <div class="achievement">Achieved 99.9% uptime with real-time WebSocket features</div>
+            <div class="achievement">Scalable ticketing platform serving thousands of users</div>
+            <div class="achievement">Full-stack application built with React, Node.js, MeteorJS, and MongoDB.</div>
           </div>
 
           <div class="experience-item">
-            <div class="company-name">CoinCloud</div>
+            <div class="company-name">
+              <a href="https://www.linkedin.com/company/coincloud/" target="_blank" rel="noopener" class="enhanced-link">CoinCloud</a>
+            </div>
             <div class="role-title">Software Engineer</div>
-            <div class="duration">Aug 2020 - Oct 2022</div>
-            <div class="achievement">Engineered Bitcoin ATM management system for 2,000+ locations</div>
-            <div class="achievement">Optimized database queries resulting in 50% faster load times</div>
-            <div class="achievement">Led migration to microservices architecture using Docker</div>
+            <div class="duration">2020 - 2022</div>
+            <div class="achievement">Bitcoin ATM management system for 5,700+ ATMs around the country.</div>
+            <div class="achievement">Solutions built with React, Node.js, MeteorJS, and MongoDB.</div>
           </div>
         </div>
 
         <!-- Skills Section -->
         <div class="glass-card stagger-up">
-          <h2 class="section-header">Technical Expertise</h2>
+          <h2 class="section-header">Tool Belt</h2>
           <div class="skills-container">
             
-            <div class="skill-category advanced">
+            <div class="skill-category">
               <div class="category-header">
                 <span class="category-icon">⚡</span>
                 <h4>Languages</h4>
-                <span class="proficiency-badge expert">Expert</span>
               </div>
               <div class="skill-items">
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">JavaScript</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/TypeScript" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">TypeScript</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">C#</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Python</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div class="skill-category advanced">
+            <div class="skill-category">
               <div class="category-header">
                 <span class="category-icon">🚀</span>
                 <h4>Frameworks & Libraries</h4>
-                <span class="proficiency-badge expert">Expert</span>
               </div>
               <div class="skill-items">
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/React_(software)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">React</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">MeteorJS</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Angular_(web_framework)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Angular</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Node.js" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Node.js</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/LangChain" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">LangChain</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/.NET" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">.NET</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div class="skill-category advanced">
+            <div class="skill-category">
               <div class="category-header">
                 <span class="category-icon">☁️</span>
                 <h4>Cloud & DevOps</h4>
-                <span class="proficiency-badge advanced">Advanced</span>
               </div>
               <div class="skill-items">
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/CI/CD" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">CI/CD Pipelines</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Docker_(software)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Docker</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Microsoft_Azure" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Azure</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="90"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item intermediate">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">AWS</span>
-                    <span class="skill-years">3/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="60"></div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div class="skill-category advanced">
+            <div class="skill-category">
               <div class="category-header">
                 <span class="category-icon">🗄️</span>
                 <h4>Databases & Tools</h4>
-                <span class="proficiency-badge advanced">Advanced</span>
               </div>
               <div class="skill-items">
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/MongoDB" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">MongoDB</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item expert">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Git" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Git</span>
-                    <span class="skill-years">5/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="100"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Azure SQL</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
-                <div class="skill-item advanced">
-                  <div class="skill-info">
+                <div class="skill-item">
+                  <a href="https://en.wikipedia.org/wiki/Jest_(JavaScript_framework)" target="_blank" rel="noopener" class="skill-link">
                     <span class="skill-name">Jest Testing</span>
-                    <span class="skill-years">4/5</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-progress" data-level="80"></div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1365,17 +1390,6 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.style.animationPlayState = 'running';
-            
-            // Animate skill progress bars
-            if (entry.target.classList.contains('glass-card')) {
-              const skillBars = entry.target.querySelectorAll('.skill-progress');
-              skillBars.forEach((bar, index) => {
-                setTimeout(() => {
-                  const level = bar.getAttribute('data-level');
-                  bar.style.width = level + '%';
-                }, index * 200 + 500); // Staggered animation
-              });
-            }
           }
         });
       }, observerOptions);
@@ -1383,23 +1397,6 @@
       document.querySelectorAll('.stagger-up').forEach(el => {
         el.style.animationPlayState = 'paused';
         observer.observe(el);
-      });
-
-      // Skill progress bars hover effects
-      document.querySelectorAll('.skill-item').forEach(item => {
-        item.addEventListener('mouseenter', () => {
-          const progressBar = item.querySelector('.skill-progress');
-          if (progressBar) {
-            progressBar.style.filter = 'brightness(1.2)';
-          }
-        });
-
-        item.addEventListener('mouseleave', () => {
-          const progressBar = item.querySelector('.skill-progress');
-          if (progressBar) {
-            progressBar.style.filter = 'brightness(1)';
-          }
-        });
       });
     });
   </script>
